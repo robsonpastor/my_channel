@@ -1,0 +1,38 @@
+{% load static from staticfiles %}
+<html>
+    <head>
+        <title>My Channel</title>
+
+	
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    </head>
+   <body>
+   
+   <div class="container-fluid">
+	  <div class="row">
+			<div class="col-md-12">
+				<nav class="navbar navbar-default" role="navigation">
+					<div class="navbar-header">
+						 
+						<a class="navbar-brand" href="#">{%block page_title %}{%endblock page_title %}</a>
+					</div>
+					
+					
+				</nav>
+			</div>
+		</div> 
+    
+        <div class="row">
+            <div class="col-md-12">
+            {% block content %}
+            {% endblock %}
+            </div>
+        </div>
+    </div>
+	</body>
+	
+
+		
+        	
+</html>
