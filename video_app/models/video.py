@@ -16,6 +16,11 @@ class Video(models.Model):
     views         = models.IntegerField(_("Views"))
     themes        = models.ManyToManyField(Theme,related_name='videos')
     
+    class Meta:
+        ordering = ['title']
+        verbose_name = _("Video")
+        verbose_name_plural = _("Videos")
+    
     def __unicode__(self):
         return self.title
     
@@ -31,7 +36,7 @@ class Video(models.Model):
     def negative_comments(self):
         return self.comments.filter(is_positive=False)
     
-    #GoodComments
+    """GoodComments"""
     def good_comments_rating(self):
         positive = self.positive_comments().count()
         negative = self.negative_comments().count()
@@ -46,7 +51,7 @@ class Video(models.Model):
     def thumbs_down(self):
         return self.thumbs.filter(is_positive=False)
     
-    #ThumbsUp
+    """ThumbsUp"""
     def thumbs_up_rating(self):
         positive = self.thumbs_up().count()
         negative = self.thumbs_down().count()
@@ -61,8 +66,5 @@ class Video(models.Model):
     def score(self):
         return self.views * self.time_factor() * self.positivity_factor()
         
-    class Meta:
-        ordering = ['title']
-        verbose_name = _("Video")
-        verbose_name_plural = _("Videos")
+    
         

@@ -15,14 +15,15 @@ class Interaction(models.Model):
             return _("Positive")
         return _("Negative")
     
-    def __unicode__(self):
-        return _("{2} is {0} at {1}").format(self.get_description(), self.time, self.video.title)
-    
     class Meta:
         abstract = True
         ordering = ['-time']
         verbose_name = _("Interaction")
         verbose_name_plural = _("Interactions")
+
+    def __unicode__(self):
+        return _("{2} is {0} at {1}").format(self.get_description(), self.time, self.video.title)
+    
 
 class Comment(Interaction):
     video       = models.ForeignKey(Video, related_name='comments')
