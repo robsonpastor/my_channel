@@ -1,0 +1,5 @@
+my_channel/settings.py
+venv/**
+/**/*.pyc
+*.sqlite3
+
